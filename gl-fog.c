@@ -9,7 +9,7 @@
    OpenGL Fog - Wrapper for the PowerVR fog functions in KOS.
 */
 
-#include "gl.h"
+#include <GL/gl.h>
 
 static GLuint  GL_KOS_FOG_MODE    = GL_EXP; /* GL_LINEAR, GL_EXP, or GL_EXP2 FOG */
 static GLfloat GL_KOS_FOG_DENSITY = 1.0f,   /* Density - GL_EXP, or GL_EXP2 FOG  */

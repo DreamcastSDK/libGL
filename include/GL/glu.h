@@ -16,9 +16,7 @@
 #include <sys/cdefs.h>
 __BEGIN_DECLS
 
-#ifndef BUILD_LIBGL
 #include <GL/gl.h>
-#endif
 
 #define GLU_FALSE 0
 #define GLU_TRUE  1

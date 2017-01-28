@@ -19,7 +19,7 @@
 #ifndef GL_ARRAYS_H
 #define GL_ARRAYS_H
 
-#include "gl.h"
+#include <GL/gl.h>
 
 #define GL_KOS_USE_ARRAY     (1<<0)
 #define GL_KOS_USE_TEXTURE0  (1<<1)

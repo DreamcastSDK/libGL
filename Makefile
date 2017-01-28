@@ -1,23 +1,58 @@
-# KallistiOS ##version##
-#
-# kos-ports/libgl Makefile
-# Copyright (C) 2013, 2014 Josh Pearson
-# Copyright (C) 2014 Lawrence Sebald
+ifneq ($(DEBUG),true)
+  QUIET:=@
+endif
 
-TARGET = libGL.a
-OBJS =  gl-rgb.o gl-fog.o gl-sh4-light.o gl-light.o gl-clip.o gl-clip-arrays.o
-OBJS += gl-arrays.o gl-pvr.o gl-matrix.o gl-api.o gl-texture.o glu-texture.o
-OBJS += gl-framebuffer.o gl-cap.o gl-error.o
+ifndef PLATFORM
+  PLATFORM:=dreamcast
+endif
 
-SUBDIRS =
+ifndef ARCH
+  ARCH:=sh-elf
+endif
 
-KOS_CFLAGS += -ffast-math -O3 -Iinclude
+ifndef INSTALL_PATH
+  INSTALL_PATH:=/usr/local
+endif
 
-defaultall: create_kos_link $(OBJS) subdirs linklib
+OBJS:=gl-rgb.o gl-fog.o gl-sh4-light.o gl-light.o gl-clip.o gl-clip-arrays.o gl-arrays.o gl-pvr.o gl-matrix.o gl-api.o gl-texture.o glu-texture.o gl-framebuffer.o gl-cap.o gl-error.o
 
-include $(KOS_BASE)/addons/Makefile.prefab
+TARGET:=libGL.a
 
-# creates the kos link to the headers
-create_kos_link:
-	rm -f ../include/GL
-	ln -s ../libgl/include ../include/GL
+CFLAGS:=-DBUILD_LIBGL \
+	-ffast-math -O3 \
+	-std=c11 \
+        -Wall -Wextra\
+        -fno-builtin \
+        -fno-strict-aliasing \
+        -fomit-frame-pointer \
+        -ffunction-sections \
+        -fdata-sections
+
+CFLAGS+=-Iinclude \
+	-I$(INSTALL_PATH)/$(PLATFORM)/$(ARCH)/include
+
+GCCPREFIX:=$(shell echo $(ARCH) | cut -d '-' -f 1)-$(PLATFORM)
+
+$(TARGET): $(OBJS)
+	@echo Linking: $@
+	$(QUIET) $(GCCPREFIX)-ar rcs $@ $(OBJS)
+
+install: $(TARGET)
+	@echo "Installing..."
+	$(QUIET) cp -R include/* $(INSTALL_PATH)/$(PLATFORM)/$(ARCH)/include/
+	$(QUIET) cp $(TARGET)    $(INSTALL_PATH)/$(PLATFORM)/$(ARCH)/lib/
+
+clean:
+	$(QUIET) rm -f $(OBJS) $(TARGET)
+
+%.o: %.c
+	@echo Building: $@
+	$(QUIET) $(GCCPREFIX)-gcc $(CFLAGS) -c $< -o $@
+
+%.o: %.s
+	@echo Building: $@
+	$(QUIET) $(GCCPREFIX)-as $< -o $@
+
+%.o: %.S
+	@echo Building: $@
+	$(QUIET) $(GCCPREFIX)-as $< -o $@

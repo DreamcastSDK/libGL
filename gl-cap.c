@@ -6,7 +6,7 @@
     KOS Open GL Capabilty State Machine Implementation.
 */
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-api.h"
 
 #include <malloc.h>

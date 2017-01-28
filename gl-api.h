@@ -10,7 +10,7 @@
 #ifndef GL_API_H
 #define GL_API_H
 
-#include "gl.h"
+#include <GL/gl.h>
 
 typedef struct {
     GLfloat pos[3];

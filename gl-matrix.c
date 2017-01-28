@@ -15,8 +15,8 @@
 
 #include <string.h>
 
-#include "gl.h"
-#include "glu.h"
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include "gl-api.h"
 #include "gl-sh4.h"
 

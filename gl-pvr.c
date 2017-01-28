@@ -26,7 +26,7 @@
 
 #include <dc/sq.h>
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-api.h"
 #include "gl-sh4.h"
 #include "gl-pvr.h"
@@ -60,7 +60,7 @@ static inline void pvr_list_submit(void *src, int n) {
 
     /* fill/write queues as many times necessary */
     while(n--) {
-        asm("pref @%0" : : "r"(s + 8));  /* prefetch 32 bytes for next loop */
+        __asm__("pref @%0" : : "r"(s + 8));  /* prefetch 32 bytes for next loop */
         d[0] = *(s++);
         d[1] = *(s++);
         d[2] = *(s++);
@@ -69,7 +69,7 @@ static inline void pvr_list_submit(void *src, int n) {
         d[5] = *(s++);
         d[6] = *(s++);
         d[7] = *(s++);
-        asm("pref @%0" : : "r"(d));
+        __asm__("pref @%0" : : "r"(d));
         d += 8;
     }
 
@@ -91,7 +91,7 @@ static inline void pvr_hdr_submit(const GLuint *src) {
     d[6] = *(src++);
     d[7] = *(src++);
 
-    asm("pref @%0" : : "r"(d));
+    __asm__("pref @%0" : : "r"(d));
 }
 
 inline void _glKosPushMultiTexObject(GL_TEXTURE_OBJECT *tex,

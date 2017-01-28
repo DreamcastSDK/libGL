@@ -8,8 +8,8 @@
    This implementation uses a dynamic linked list to store the texture objects.
 */
 
-#include "gl.h"
-#include "glext.h"
+#include <GL/gl.h>
+#include <GL/glext.h>
 #include "gl-api.h"
 #include "gl-rgb.h"
 

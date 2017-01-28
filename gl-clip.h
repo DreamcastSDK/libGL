@@ -14,7 +14,7 @@
 #ifndef GL_CLIP_H
 #define GL_CLIP_H
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-sh4.h"
 
 #define NONE   0x0000 /* Clip Codes */

@@ -7,7 +7,7 @@
     KOS Open GL State Machine Error Code Implementation.
 */
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-api.h"
 
 #include <stdio.h>

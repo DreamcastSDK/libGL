@@ -18,8 +18,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "gl.h"
-#include "glext.h"
+#include <GL/gl.h>
+#include <GL/glext.h>
 #include "gl-api.h"
 #include "gl-arrays.h"
 #include "gl-pvr.h"

@@ -11,8 +11,8 @@
    This implementation uses a dynamic linked list to implement the data structures needed.
 */
 
-#include "gl.h"
-#include "glext.h"
+#include <GL/gl.h>
+#include <GL/glext.h>
 #include "gl-api.h"
 
 #include <malloc.h>

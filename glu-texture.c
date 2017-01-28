@@ -6,10 +6,10 @@
    A set of functions for working with ARGB pixel data.
 */
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-api.h"
 #include "gl-rgb.h"
-#include "glu.h"
+#include <GL/glu.h>
 
 GLAPI GLuint APIENTRY glKosMipMapTexSize(GLuint width, GLuint height) {
     GLuint b = 0;

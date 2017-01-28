@@ -7,7 +7,7 @@
    The pixel conversion functions are for submitting textures not supported by the PVR.
 */
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-rgb.h"
 
 //===================================================================================================//

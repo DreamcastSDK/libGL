@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "gl.h"
+#include <GL/gl.h>
 #include "gl-api.h"
 #include "gl-clip.h"
 
