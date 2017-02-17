@@ -33,7 +33,7 @@ CFLAGS:=-ffast-math -O3 \
 CFLAGS+=-Iinclude \
 	-I$(INSTALL_PATH)/$(PLATFORM)/$(ARCH)/include
 
-GCCPREFIX:=$(shell echo $(ARCH) | cut -d '-' -f 1)-$(PLATFORM)
+GCCPREFIX:=$(PLATFORM)-$(shell echo $(ARCH) | cut -d '-' -f 1)
 
 $(TARGET): $(OBJS)
 	@echo Linking: $@
